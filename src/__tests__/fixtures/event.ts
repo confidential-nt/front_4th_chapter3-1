@@ -1,5 +1,18 @@
 import { Event } from '../../types';
 
+export const DOMAIN_TARGET_EVENT: Event = {
+  id: '3',
+  title: '친구 생일 파티',
+  date: '2025-02-01',
+  startTime: '19:30',
+  endTime: '22:00',
+  description: '친구 집에서 생일 파티',
+  location: '서울 강남구',
+  category: '개인',
+  repeat: { type: 'yearly', interval: 1 }, // 매년 반복
+  notificationTime: 60, // 1시간 전 알림
+};
+
 export const DOMAIN_EVENTS: Event[] = [
   {
     id: '1',
@@ -25,18 +38,7 @@ export const DOMAIN_EVENTS: Event[] = [
     repeat: { type: 'daily', interval: 1 }, // 매일 반복
     notificationTime: 15, // 15분 전 알림
   },
-  {
-    id: '3',
-    title: '친구 생일 파티',
-    date: '2025-02-01',
-    startTime: '19:30',
-    endTime: '22:00',
-    description: '친구 집에서 생일 파티',
-    location: '서울 강남구',
-    category: '개인',
-    repeat: { type: 'yearly', interval: 1 }, // 매년 반복
-    notificationTime: 60, // 1시간 전 알림
-  },
+  DOMAIN_TARGET_EVENT,
   {
     id: '4',
     title: '월간 보고서 제출',
@@ -63,17 +65,4 @@ export const DOMAIN_EVENTS: Event[] = [
   },
 ];
 
-export const DOMAIN_TARGET_EVENT = {
-  id: '3',
-  title: '친구 생일 파티',
-  date: '2025-02-01',
-  startTime: '19:30',
-  endTime: '22:00',
-  description: '친구 집에서 생일 파티',
-  location: '서울 강남구',
-  category: '개인',
-  repeat: { type: 'yearly', interval: 1 }, // 매년 반복
-  notificationTime: 60, // 1시간 전 알림
-};
-
-export const DOMAIN_TARGET_EVENT_DATE = '2025-02-01';
+export const DOMAIN_TARGET_EVENT_DATE = DOMAIN_TARGET_EVENT['date'];
