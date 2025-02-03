@@ -1,5 +1,3 @@
-import { expect } from 'vitest';
-
 import { INVALID_DATE_MESSAGE } from '../../constant/eventOverlap';
 import { Event } from '../../types';
 import {
