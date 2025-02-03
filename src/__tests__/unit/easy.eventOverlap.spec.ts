@@ -39,8 +39,8 @@ describe('parseDateTime', () => {
 describe('convertEventToDateRange', () => {
   it('일반적인 이벤트를 올바른 시작 및 종료 시간을 가진 객체로 변환한다', () => {
     expect(convertEventToDateRange(DOMAIN_TARGET_EVENT)).toEqual({
-      start: new Date('2025-02-01T19:30'),
-      end: new Date('2025-02-01T22:00'),
+      start: new Date('2024-07-01T19:30'),
+      end: new Date('2024-07-01T22:00'),
     });
   });
 
@@ -54,7 +54,7 @@ describe('convertEventToDateRange', () => {
   it('잘못된 시간 형식의 이벤트에 대해 Invalid Date를 반환한다', () => {
     expect(convertEventToDateRange(DOMAIN_INVALID_TIME_TARGET_EVENT)).toEqual({
       start: INVALID_DATE_MESSAGE,
-      end: new Date('2025-02-01T22:00'),
+      end: new Date('2024-07-01T22:00'),
     });
   });
 });
@@ -69,7 +69,7 @@ describe('isOverlapping', () => {
   });
 });
 
-describe.only('findOverlappingEvents', () => {
+describe('findOverlappingEvents', () => {
   it('새 이벤트와 겹치는 모든 이벤트를 반환한다', () => {
     const result = findOverlappingEvents(DOMAIN_TARGET_OVERLAPPING_NEW_EVENT, DOMAIN_EVENTS);
 

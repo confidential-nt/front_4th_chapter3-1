@@ -13,7 +13,11 @@ import {
   getWeeksAtMonth,
   isDateInRange,
 } from '../../utils/dateUtils';
-import { DOMAIN_EVENTS, DOMAIN_TARGET_EVENT } from '../fixtures/event';
+import {
+  DOMAIN_EVENTS,
+  DOMAIN_TARGET_EVENT,
+  DOMAIN_TARGET_OVERLAPPING_EVENT,
+} from '../fixtures/event';
 
 describe('getDaysInMonth', () => {
   it('1월은 31일 수를 반환한다', () => {
@@ -223,8 +227,8 @@ describe('getEventsForDay', () => {
   it('특정 날짜(1일)에 해당하는 이벤트만 정확히 반환한다', () => {
     const result = getEventsForDay(DOMAIN_EVENTS, 1);
 
-    expect(result.length).toBe(1);
-    expect(result).toEqual([DOMAIN_TARGET_EVENT]);
+    expect(result.length).toBe(2);
+    expect(result).toEqual([DOMAIN_TARGET_EVENT, DOMAIN_TARGET_OVERLAPPING_EVENT]);
   });
 
   it('해당 날짜에 이벤트가 없을 경우 빈 배열을 반환한다', () => {
