@@ -13,6 +13,45 @@ export const DOMAIN_TARGET_EVENT: Event = {
   notificationTime: 60, // 1시간 전 알림
 };
 
+export const DOMAIN_TARGET_OVERLAPPING_EVENT: Event = {
+  id: '4',
+  title: '월간 보고서 제출',
+  date: '2025-02-01',
+  startTime: '19:00',
+  endTime: '21:00',
+  description: '월간 업무 보고서 작성 및 제출',
+  location: '사무실',
+  category: '업무',
+  repeat: { type: 'monthly', interval: 1, endDate: '2025-12-31' }, // 매월 반복 (12월까지)
+  notificationTime: 45, // 45분 전 알림
+};
+
+export const DOMAIN_TARGET_OVERLAPPING_NEW_EVENT: Event = {
+  id: '6',
+  title: '보컬 학원',
+  date: '2025-02-01',
+  startTime: '19:30',
+  endTime: '22:00',
+  description: '보컬 학원 가기',
+  location: '서울 강남구',
+  category: '개인',
+  repeat: { type: 'yearly', interval: 1 }, // 매년 반복
+  notificationTime: 60, // 1시간 전 알림
+};
+
+export const DOMAIN_TARGET_NOT_OVERLAPPING_NEW_EVENT: Event = {
+  id: '6',
+  title: '가족들과 외식',
+  date: '2025-02-01',
+  startTime: '17:00',
+  endTime: '18:00',
+  description: '가족들과 외식 하기',
+  location: '서울 강남구',
+  category: '개인',
+  repeat: { type: 'yearly', interval: 1 }, // 매년 반복
+  notificationTime: 60, // 1시간 전 알림
+};
+
 export const DOMAIN_EVENTS: Event[] = [
   {
     id: '1',
@@ -39,18 +78,7 @@ export const DOMAIN_EVENTS: Event[] = [
     notificationTime: 15, // 15분 전 알림
   },
   DOMAIN_TARGET_EVENT,
-  {
-    id: '4',
-    title: '월간 보고서 제출',
-    date: '2025-02-28',
-    startTime: '14:00',
-    endTime: '15:00',
-    description: '월간 업무 보고서 작성 및 제출',
-    location: '사무실',
-    category: '업무',
-    repeat: { type: 'monthly', interval: 1, endDate: '2025-12-31' }, // 매월 반복 (12월까지)
-    notificationTime: 45, // 45분 전 알림
-  },
+  DOMAIN_TARGET_OVERLAPPING_EVENT,
   {
     id: '5',
     title: '의사 진료 예약',
@@ -66,3 +94,29 @@ export const DOMAIN_EVENTS: Event[] = [
 ];
 
 export const DOMAIN_TARGET_EVENT_DATE = DOMAIN_TARGET_EVENT['date'];
+
+export const DOMAIN_INVALID_DATE_TARGET_EVENT: Event = {
+  id: '3',
+  title: '친구 생일 파티',
+  date: '01-02-2025',
+  startTime: '19:30',
+  endTime: '22:00',
+  description: '친구 집에서 생일 파티',
+  location: '서울 강남구',
+  category: '개인',
+  repeat: { type: 'yearly', interval: 1 }, // 매년 반복
+  notificationTime: 60, // 1시간 전 알림
+};
+
+export const DOMAIN_INVALID_TIME_TARGET_EVENT: Event = {
+  id: '3',
+  title: '친구 생일 파티',
+  date: '2025-02-01',
+  startTime: '30:19',
+  endTime: '22:00',
+  description: '친구 집에서 생일 파티',
+  location: '서울 강남구',
+  category: '개인',
+  repeat: { type: 'yearly', interval: 1 }, // 매년 반복
+  notificationTime: 60, // 1시간 전 알림
+};

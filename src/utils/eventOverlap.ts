@@ -1,7 +1,13 @@
+import { INVALID_DATE_MESSAGE } from '../constant/eventOverlap';
 import { Event, EventForm } from '../types';
 
 export function parseDateTime(date: string, time: string) {
-  return new Date(`${date}T${time}`);
+  const parsedDate = new Date(`${date}T${time}`);
+
+  if (isNaN(parsedDate.getTime())) {
+    return INVALID_DATE_MESSAGE;
+  }
+  return parsedDate;
 }
 
 export function convertEventToDateRange({ date, startTime, endTime }: Event | EventForm) {
