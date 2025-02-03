@@ -1,0 +1,79 @@
+import { Event } from '../../types';
+
+export const DOMAIN_EVENTS: Event[] = [
+  {
+    id: '1',
+    title: '팀 회의',
+    date: '2025-02-05',
+    startTime: '10:00',
+    endTime: '11:00',
+    description: '주간 팀 미팅',
+    location: '회의실 A',
+    category: '업무',
+    repeat: { type: 'weekly', interval: 1, endDate: '2025-06-05' }, // 매주 반복 (6월 5일까지)
+    notificationTime: 30, // 30분 전 알림
+  },
+  {
+    id: '2',
+    title: '운동하기',
+    date: '2025-02-06',
+    startTime: '18:00',
+    endTime: '19:00',
+    description: '헬스장에서 웨이트 트레이닝',
+    location: '헬스장',
+    category: '운동',
+    repeat: { type: 'daily', interval: 1 }, // 매일 반복
+    notificationTime: 15, // 15분 전 알림
+  },
+  {
+    id: '3',
+    title: '친구 생일 파티',
+    date: '2025-02-01',
+    startTime: '19:30',
+    endTime: '22:00',
+    description: '친구 집에서 생일 파티',
+    location: '서울 강남구',
+    category: '개인',
+    repeat: { type: 'yearly', interval: 1 }, // 매년 반복
+    notificationTime: 60, // 1시간 전 알림
+  },
+  {
+    id: '4',
+    title: '월간 보고서 제출',
+    date: '2025-02-28',
+    startTime: '14:00',
+    endTime: '15:00',
+    description: '월간 업무 보고서 작성 및 제출',
+    location: '사무실',
+    category: '업무',
+    repeat: { type: 'monthly', interval: 1, endDate: '2025-12-31' }, // 매월 반복 (12월까지)
+    notificationTime: 45, // 45분 전 알림
+  },
+  {
+    id: '5',
+    title: '의사 진료 예약',
+    date: '2025-03-10',
+    startTime: '09:00',
+    endTime: '09:30',
+    description: '정기 건강 검진',
+    location: '서울 병원',
+    category: '건강',
+    repeat: { type: 'none', interval: 0 }, // 반복 없음
+    notificationTime: 20, // 20분 전 알림
+  },
+];
+
+export const DOMAIN_TARGET_EVENT = {
+  id: '3',
+  title: '친구 생일 파티',
+  date: '2025-02-01',
+  startTime: '19:30',
+  endTime: '22:00',
+  description: '친구 집에서 생일 파티',
+  location: '서울 강남구',
+  category: '개인',
+  repeat: { type: 'yearly', interval: 1 }, // 매년 반복
+  notificationTime: 60, // 1시간 전 알림
+};
+
+export const DOMAIN_TARGET_EVENT_DATE = '2025-02-01';
