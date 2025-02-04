@@ -16,6 +16,7 @@ import {
   DOMAIN_TARGET_EVENT,
   DOMAIN_TARGET_OVERLAPPING_EVENT,
 } from '../fixtures/event';
+import { assertDatesMatch } from '../utils';
 
 // ! 왜 describe를 import 안해도 사용할 수 있는거지?
 // 테스트도 eslint 가능하구나....
@@ -64,11 +65,7 @@ describe('getWeekDates', () => {
 
     expect(result).toHaveLength(7);
 
-    result.forEach((date, index) => {
-      expect(date.toISOString().split('T')[0]).toBe(
-        expectedDates[index].toISOString().split('T')[0]
-      );
-    });
+    assertDatesMatch(result, expectedDates);
   });
 
   it('주의 시작(월요일)에 대해 올바른 주의 날짜들을 반환한다', () => {
@@ -87,11 +84,7 @@ describe('getWeekDates', () => {
 
     expect(result).toHaveLength(7);
 
-    result.forEach((date, index) => {
-      expect(date.toISOString().split('T')[0]).toBe(
-        expectedDates[index].toISOString().split('T')[0]
-      );
-    });
+    assertDatesMatch(result, expectedDates);
   });
 
   it('주의 끝(일요일)에 대해 올바른 주의 날짜들을 반환한다', () => {
@@ -110,11 +103,7 @@ describe('getWeekDates', () => {
 
     expect(result).toHaveLength(7);
 
-    result.forEach((date, index) => {
-      expect(date.toISOString().split('T')[0]).toBe(
-        expectedDates[index].toISOString().split('T')[0]
-      );
-    });
+    assertDatesMatch(result, expectedDates);
   });
 
   it('연도를 넘어가는 주의 날짜를 정확히 처리한다 (연말)', () => {
@@ -133,11 +122,7 @@ describe('getWeekDates', () => {
 
     expect(result).toHaveLength(7);
 
-    result.forEach((date, index) => {
-      expect(date.toISOString().split('T')[0]).toBe(
-        expectedDates[index].toISOString().split('T')[0]
-      );
-    });
+    assertDatesMatch(result, expectedDates);
   });
 
   it('연도를 넘어가는 주의 날짜를 정확히 처리한다 (연초)', () => {
@@ -156,11 +141,7 @@ describe('getWeekDates', () => {
 
     expect(result).toHaveLength(7);
 
-    result.forEach((date, index) => {
-      expect(date.toISOString().split('T')[0]).toBe(
-        expectedDates[index].toISOString().split('T')[0]
-      );
-    });
+    assertDatesMatch(result, expectedDates);
   });
 
   it('윤년의 2월 29일을 포함한 주를 올바르게 처리한다', () => {
@@ -179,11 +160,7 @@ describe('getWeekDates', () => {
 
     expect(result).toHaveLength(7);
 
-    result.forEach((date, index) => {
-      expect(date.toISOString().split('T')[0]).toBe(
-        expectedDates[index].toISOString().split('T')[0]
-      );
-    });
+    assertDatesMatch(result, expectedDates);
   });
 
   it('월의 마지막 날짜를 포함한 주를 올바르게 처리한다', () => {
@@ -203,11 +180,7 @@ describe('getWeekDates', () => {
 
     expect(result).toHaveLength(7);
 
-    result.forEach((date, index) => {
-      expect(date.toISOString().split('T')[0]).toBe(
-        expectedDates[index].toISOString().split('T')[0]
-      );
-    });
+    assertDatesMatch(result, expectedDates);
   });
 });
 
