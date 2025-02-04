@@ -17,6 +17,8 @@ import {
   DOMAIN_TARGET_OVERLAPPING_EVENT,
 } from '../fixtures/event';
 
+// ! 왜 describe를 import 안해도 사용할 수 있는거지?
+// 테스트도 eslint 가능하구나....
 describe('getDaysInMonth', () => {
   it('1월은 31일 수를 반환한다', () => {
     // ! 이런 날짜를 상수에 넣는다면 더 복잡해질까?

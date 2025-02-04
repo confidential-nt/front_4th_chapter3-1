@@ -1,3 +1,5 @@
+import { INVALID_TIME_ERROR } from '../constant/error';
+
 export interface TimeValidationResult {
   startTimeError: string | null;
   endTimeError: string | null;
@@ -12,10 +14,8 @@ export function getTimeErrorMessage(start: string, end: string): TimeValidationR
   const endDate = new Date(`2000-01-01T${end}`);
 
   if (startDate >= endDate) {
-    return {
-      startTimeError: '시작 시간은 종료 시간보다 빨라야 합니다.',
-      endTimeError: '종료 시간은 시작 시간보다 늦어야 합니다.',
-    };
+    // ! throw Error vs 이런 식의 에러 메시지
+    return INVALID_TIME_ERROR;
   }
 
   return { startTimeError: null, endTimeError: null };
