@@ -111,7 +111,7 @@ export const DOMAIN_EVENTS: Event[] = [
   DOMAIN_TARGET_IGNORE_CASE_EVENT,
 ];
 
-export const DOMAIN_EVENTS_IN_WEEK = [
+export const DOMAIN_EVENTS_IN_WEEK: Event[] = [
   {
     id: '1',
     title: '팀 회의',
@@ -128,7 +128,7 @@ export const DOMAIN_EVENTS_IN_WEEK = [
   DOMAIN_TARGET_OVERLAPPING_EVENT,
 ];
 
-export const DOMAIN_EVENTS_IN_MONTH = [
+export const DOMAIN_EVENTS_IN_MONTH: Event[] = [
   {
     id: '1',
     title: '팀 회의',
@@ -155,6 +155,23 @@ export const DOMAIN_EVENTS_IN_MONTH = [
   },
   DOMAIN_TARGET_EVENT,
   DOMAIN_TARGET_OVERLAPPING_EVENT,
+];
+
+export const DOMAIN_EVENTS_SEARCHABLE_FIELD_IN_WEEK = [
+  DOMAIN_TARGET_EVENT,
+  DOMAIN_TARGET_OVERLAPPING_EVENT,
+  {
+    id: '1',
+    title: '팀 회의',
+    date: '2024-07-05',
+    startTime: '10:00',
+    endTime: '11:00',
+    description: '주간 팀 미팅',
+    location: '회의실 A',
+    category: '업무',
+    repeat: { type: 'weekly', interval: 1, endDate: '2024-12-05' }, // 매주 반복 (12월 5일까지)
+    notificationTime: 30, // 30분 전 알림
+  },
 ];
 
 export const DOMAIN_INVALID_DATE_TARGET_EVENT: Event = {
