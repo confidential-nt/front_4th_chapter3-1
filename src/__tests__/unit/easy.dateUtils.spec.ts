@@ -37,7 +37,7 @@ describe('getDaysInMonth', () => {
   });
 
   // 에러를 던지는지 안던지는지 테스트할 때는 함수 안에 넣기!
-  it('유효하지 않은 월에 대해 적절히 처리한다', () => {
+  it('유효하지 않은 월에 대해 에러 메시지를 반환한다', () => {
     // ! 적절히 처리한다.. -> 에러를 던져야하지 않을까?
     expect(() => getDaysInMonth(2025, 13)).toThrowError(INVALID_MONTH_ERROR);
   });
