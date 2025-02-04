@@ -4,12 +4,12 @@ import { useCalendarView } from '../../hooks/useCalendarView.ts';
 // ! 아 테스트 중에 반복되는 건 여기다가..
 import { assertDate } from '../utils.ts';
 
-beforeEach(() => {
+beforeAll(() => {
   vi.useFakeTimers(); // 가짜 타이머 활성화
   vi.setSystemTime(new Date('2024-10-01')); // 현재 시간을 2024-10-01로 고정
 });
 
-afterEach(() => {
+afterAll(() => {
   vi.useRealTimers(); // 타이머 원래대로 복구
 });
 
