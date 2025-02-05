@@ -8,6 +8,8 @@ const mockEvents = [...events] as Event[];
 
 // ! HARD
 // ! 각 응답에 대한 MSW 핸들러를 작성해주세요. GET 요청은 이미 작성되어 있는 events json을 활용해주세요.
+
+// 실제 개발에서 사용할 핸들러들.
 export const handlers = [
   http.get('/api/events', () => {
     return HttpResponse.json({ events: mockEvents });
@@ -25,14 +27,23 @@ export const handlers = [
     const updatedEvent = (await request.json()) as Event;
     const index = mockEvents.findIndex((event) => event.id === id);
 
-    mockEvents[index] = { ...mockEvents[index], ...updatedEvent };
-    return HttpResponse.json(mockEvents[index]);
+    if (index !== -1) {
+      mockEvents[index] = { ...mockEvents[index], ...updatedEvent };
+      return HttpResponse.json(mockEvents[index]);
+    }
+
+    return new HttpResponse(null, { status: 404 });
   }),
 
   http.delete('/api/events/:id', ({ params }) => {
     const { id } = params;
     const index = mockEvents.findIndex((event) => event.id === id);
-    mockEvents.splice(index, 1);
-    return new HttpResponse(null, { status: 204 });
+
+    if (index !== -1) {
+      mockEvents.splice(index, 1);
+      return new HttpResponse(null, { status: 204 });
+    }
+
+    return new HttpResponse(null, { status: 404 });
   }),
 ];

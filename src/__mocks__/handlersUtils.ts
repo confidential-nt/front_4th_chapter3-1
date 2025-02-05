@@ -6,12 +6,13 @@ import { Event } from '../types';
 // ! Hard
 // ! 이벤트는 생성, 수정 되면 fetch를 다시 해 상태를 업데이트 합니다. 이를 위한 제어가 필요할 것 같은데요. 어떻게 작성해야 테스트가 병렬로 돌아도 안정적이게 동작할까요?
 // ! 아래 이름을 사용하지 않아도 되니, 독립적이게 테스트를 구동할 수 있는 방법을 찾아보세요. 그리고 이 로직을 PR에 설명해주세요.
-// 참고: https://mswjs.io/docs/api/setup-server/boundary/
+// 참고: https://mswjs.io/docs/api/setup-server/boundary/ -> 다른 방법이 될지도? : 근데 내가 필요로 하는 방법은 아닌듯.
+// -> fetch를 직접 테스트하면 모를까, 나의 경우는 컴포넌트 내부에서 간접적으로 호출하는 건데....
 export const setupMockHandlerCreation = (initEvents = [] as Event[]) => {
   // 각각의 모든 테스트가 실행되기 전에 server는 reset 됨.
   const mockEvents: Event[] = [...initEvents]; // 이벤트의 상태가 여기서만 보장되도록.
 
-  // 여기서만 사용할 핸들러
+  // 여기서만 사용할 핸들러 -> 원래 핸들러를 덮어쓰기한다. -> 어떠한 상황을 인위적으로 만든다. -> 항상 같은 응답이 나온다 -> 테스트한다.
   server.use(
     http.get('/api/events', () => {
       return HttpResponse.json({ events: mockEvents });
