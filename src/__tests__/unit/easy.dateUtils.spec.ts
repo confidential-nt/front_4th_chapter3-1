@@ -1,5 +1,4 @@
 import { INVALID_MONTH_ERROR } from '../../constant/error';
-import { Event } from '../../types';
 import {
   fillZero,
   formatDate,

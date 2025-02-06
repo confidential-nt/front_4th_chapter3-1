@@ -1,7 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { act, renderHook } from '@testing-library/react';
 
 import { useNotifications } from '../../hooks/useNotifications.ts';
-import { Event } from '../../types.ts';
 import { formatDate } from '../../utils/dateUtils.ts';
 import {
   DOMAIN_EVENTS,

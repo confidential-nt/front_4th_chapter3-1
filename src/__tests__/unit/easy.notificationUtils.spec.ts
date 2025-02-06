@@ -1,4 +1,3 @@
-import { Event } from '../../types';
 import { createNotificationMessage, getUpcomingEvents } from '../../utils/notificationUtils';
 import { DOMAIN_EVENTS, DOMAIN_TARGET_EVENT, DOMAIN_TARGET_EVENT_DATE } from '../fixtures/event';
 

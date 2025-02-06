@@ -1,4 +1,3 @@
-import { Event } from '../../types';
 import { getFilteredEvents } from '../../utils/eventUtils';
 import {
   DOMAIN_EVENTS,

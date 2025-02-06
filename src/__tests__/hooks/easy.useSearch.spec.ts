@@ -1,7 +1,6 @@
 import { act, renderHook } from '@testing-library/react';
 
 import { useSearch } from '../../hooks/useSearch.ts';
-import { Event } from '../../types.ts';
 import {
   DOMAIN_EVENTS,
   DOMAIN_EVENTS_IN_MONTH,

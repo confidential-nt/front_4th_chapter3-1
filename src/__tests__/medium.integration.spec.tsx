@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { ChakraProvider } from '@chakra-ui/react';
 import { render, screen, within, act, waitFor } from '@testing-library/react';
 import { UserEvent, userEvent } from '@testing-library/user-event';
@@ -688,7 +689,7 @@ it('notificationTime을 10으로 하면 지정 시간 10분 전 알람 텍스트
 
   render(<TestComponent />);
 
-  await act(() => vi.advanceTimersByTime(1000)); // 기다려줘야함;;
+  await act(() => vi.advanceTimersByTime(1000)); // 기다려줘야함;; 그럼 useNotification 에서는 왜 괜찮았던건지....
 
   const expectedText = await screen.findByText(createNotificationMessage(events[0]));
 
