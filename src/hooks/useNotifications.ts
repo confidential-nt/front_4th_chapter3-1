@@ -11,7 +11,7 @@ export const useNotifications = (events: Event[]) => {
   const checkUpcomingEvents = () => {
     const now = new Date();
     const upcomingEvents = getUpcomingEvents(events, now, notifiedEvents);
-
+    console.log(now, upcomingEvents);
     setNotifications((prev) => [
       ...prev,
       ...upcomingEvents.map((event) => ({

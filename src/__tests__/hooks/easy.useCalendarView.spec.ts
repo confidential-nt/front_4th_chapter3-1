@@ -4,15 +4,6 @@ import { useCalendarView } from '../../hooks/useCalendarView.ts';
 // ! 아 테스트 중에 반복되는 건 여기다가..
 import { assertDate } from '../utils.ts';
 
-beforeAll(() => {
-  vi.useFakeTimers(); // 가짜 타이머 활성화
-  vi.setSystemTime(new Date('2024-10-01')); // 현재 시간을 2024-10-01로 고정
-});
-
-afterAll(() => {
-  vi.useRealTimers(); // 타이머 원래대로 복구
-});
-
 describe('초기 상태', () => {
   it('view는 "month"이어야 한다', () => {
     const { result } = renderHook(() => useCalendarView());
