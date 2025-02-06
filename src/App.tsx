@@ -1,10 +1,4 @@
-import {
-  BellIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  DeleteIcon,
-  EditIcon,
-} from '@chakra-ui/icons';
+import { BellIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
@@ -17,40 +11,24 @@ import {
   IconButton,
   Input,
   Select,
-  Table,
-  Tbody,
-  Td,
   Text,
-  Th,
-  Thead,
   Tooltip,
-  Tr,
   useToast,
   VStack,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 
+import { CalendarView } from './components/CalendarView.tsx';
 import { IsOverlapDialog } from './components/IsOverlapDialog.tsx';
-import { MonthView } from './components/MonthView.tsx';
 import { NotificationAlert } from './components/NotificationAlert.tsx';
-import { WeekView } from './components/WeekView.tsx';
 import { CATEGORIES } from './constant/category.ts';
 import { NOTIFICATION_OPTIONS } from './constant/notification.ts';
-import { WEEK_DAYS } from './constant/week-day.ts';
 import { useCalendarView } from './hooks/useCalendarView.ts';
 import { useEventForm } from './hooks/useEventForm.ts';
 import { useEventOperations } from './hooks/useEventOperations.ts';
 import { useNotifications } from './hooks/useNotifications.ts';
 import { useSearch } from './hooks/useSearch.ts';
 import { Event, EventForm, RepeatType } from './types/event.ts';
-import {
-  formatDate,
-  formatMonth,
-  formatWeek,
-  getEventsForDay,
-  getWeekDates,
-  getWeeksAtMonth,
-} from './utils/dateUtils';
 import { findOverlappingEvents } from './utils/eventOverlap';
 import { getTimeErrorMessage } from './utils/timeValidation';
 
@@ -93,7 +71,10 @@ function App() {
   );
 
   const { notifications, notifiedEvents, setNotifications } = useNotifications(events);
-  const { view, setView, currentDate, holidays, navigate } = useCalendarView();
+
+  // ! 이 hook을 두번 호출 중..
+  const { view, currentDate } = useCalendarView();
+
   const { searchTerm, filteredEvents, setSearchTerm } = useSearch(events, currentDate, view);
 
   const [isOverlapDialogOpen, setIsOverlapDialogOpen] = useState(false);
@@ -276,46 +257,7 @@ function App() {
           </Button>
         </VStack>
 
-        <VStack flex={1} spacing={5} align="stretch">
-          <Heading>일정 보기</Heading>
-
-          <HStack mx="auto" justifyContent="space-between">
-            <IconButton
-              aria-label="Previous"
-              icon={<ChevronLeftIcon />}
-              onClick={() => navigate('prev')}
-            />
-            <Select
-              aria-label="view"
-              value={view}
-              onChange={(e) => setView(e.target.value as 'week' | 'month')}
-            >
-              <option value="week">Week</option>
-              <option value="month">Month</option>
-            </Select>
-            <IconButton
-              aria-label="Next"
-              icon={<ChevronRightIcon />}
-              onClick={() => navigate('next')}
-            />
-          </HStack>
-
-          {view === 'week' && (
-            <WeekView
-              currentDate={currentDate}
-              filteredEvents={filteredEvents}
-              notifiedEvents={notifiedEvents}
-            />
-          )}
-          {view === 'month' && (
-            <MonthView
-              currentDate={currentDate}
-              filteredEvents={filteredEvents}
-              notifiedEvents={notifiedEvents}
-              holidays={holidays}
-            />
-          )}
-        </VStack>
+        <CalendarView filteredEvents={filteredEvents} notifiedEvents={notifiedEvents} />
 
         <VStack data-testid="event-list" w="500px" h="full" overflowY="auto">
           <FormControl>
