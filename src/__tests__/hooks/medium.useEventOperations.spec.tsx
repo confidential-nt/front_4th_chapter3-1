@@ -9,7 +9,7 @@ import {
 } from '../../__mocks__/handlersUtils.ts';
 import { useEventOperations } from '../../hooks/useEventOperations.ts';
 import { server } from '../../setupTests.ts';
-import { Event } from '../../types.ts';
+import { Event } from '../../types/event.ts';
 import { DOMAIN_EVENTS } from '../fixtures/event.ts';
 
 it('저장되어있는 초기 이벤트 데이터를 적절하게 불러온다', async () => {

@@ -7,7 +7,7 @@ import { ReactElement } from 'react';
 
 import App from '../App';
 import { server } from '../setupTests';
-import { Event } from '../types';
+import { Event } from '../types/event';
 import { DOMAIN_EVENTS, DOMAIN_TARGET_EVENT } from './fixtures/event';
 import { createNotificationMessage } from '../utils/notificationUtils';
 

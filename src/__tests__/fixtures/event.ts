@@ -1,4 +1,4 @@
-import { Event } from '../../types';
+import { Event } from '../../types/event';
 
 // ! 안정되지 않은 픽스쳐에 의한 테스트 수정 발생 방지하는 법은?
 

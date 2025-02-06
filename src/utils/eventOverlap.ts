@@ -1,5 +1,5 @@
 import { INVALID_DATE_MESSAGE } from '../constant/eventOverlap';
-import { Event, EventForm } from '../types';
+import { Event, EventForm } from '../types/event';
 
 export function parseDateTime(date: string, time: string) {
   const parsedDate = new Date(`${date}T${time}`);

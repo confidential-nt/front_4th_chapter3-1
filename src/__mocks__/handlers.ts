@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
 
-import { Event } from '../types';
+import { Event } from '../types/event';
 import { events } from './response/events.json' assert { type: 'json' };
 
 // events를 바로 사용하는 건 데이터 오염 가능성 있음.

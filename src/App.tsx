@@ -6,19 +6,15 @@ import {
   EditIcon,
 } from '@chakra-ui/icons';
 import {
-  Alert,
   AlertDialog,
   AlertDialogBody,
   AlertDialogContent,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  AlertIcon,
-  AlertTitle,
   Box,
   Button,
   Checkbox,
-  CloseButton,
   Flex,
   FormControl,
   FormLabel,
@@ -40,6 +36,7 @@ import {
 } from '@chakra-ui/react';
 import { useRef, useState } from 'react';
 
+import { NotificationAlert } from './components/NotificationAlert.tsx';
 import { CATEGORIES } from './constant/category.ts';
 import { NOTIFICATION_OPTIONS } from './constant/notification.ts';
 import { WEEK_DAYS } from './constant/week-day.ts';
@@ -48,7 +45,7 @@ import { useEventForm } from './hooks/useEventForm.ts';
 import { useEventOperations } from './hooks/useEventOperations.ts';
 import { useNotifications } from './hooks/useNotifications.ts';
 import { useSearch } from './hooks/useSearch.ts';
-import { Event, EventForm, RepeatType } from './types';
+import { Event, EventForm, RepeatType } from './types/event.ts';
 import {
   formatDate,
   formatMonth,
@@ -564,19 +561,10 @@ function App() {
       </AlertDialog>
 
       {notifications.length > 0 && (
-        <VStack position="fixed" top={4} right={4} spacing={2} align="flex-end">
-          {notifications.map((notification, index) => (
-            <Alert key={index} status="info" variant="solid" width="auto">
-              <AlertIcon />
-              <Box flex="1">
-                <AlertTitle fontSize="sm">{notification.message}</AlertTitle>
-              </Box>
-              <CloseButton
-                onClick={() => setNotifications((prev) => prev.filter((_, i) => i !== index))}
-              />
-            </Alert>
-          ))}
-        </VStack>
+        <NotificationAlert
+          notifications={notifications}
+          onClose={(index) => setNotifications((prev) => prev.filter((_, i) => i !== index))}
+        />
       )}
     </Box>
   );
